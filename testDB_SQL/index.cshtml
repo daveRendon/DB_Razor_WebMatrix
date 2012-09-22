@@ -1,0 +1,36 @@
+﻿@{
+     var db = Database.Open("Peliculas");
+    var selectQueryString = "SELECT * FROM catalogo ORDER BY Anio";
+ }
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <title>Creacion y consulta tablas SQL Server CE</title>
+    <style>
+        table, th, td {
+           border: solid 1px #bbbbbb;
+           border-collapse: collapse;
+           padding: 2px;
+           }
+        </style>
+ </head>
+ <body>
+     <h1>Mi Catalogo de Peliculas</h1>
+    <table>
+        <thead>
+           <tr>
+              <th>Año</th>
+              <th>Pelicula</th>
+           </tr>
+        </thead>
+           <tbody>
+           @foreach(var row in db.Query(selectQueryString)){
+             <tr>
+                 <td>@row.Anio</td>
+                 <td>@row.Nombre</td>
+              </tr>
+           }
+        </tbody>
+ </table>
+ </body>
+ </html> 
